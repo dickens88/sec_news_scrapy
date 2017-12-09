@@ -19,13 +19,15 @@ class SecNewsSpider(scrapy.Spider):
             topics.append(topic)
 
         for topic in topics:
-            yield Request(url=topic['link'][0], dont_filter=False, callback=self.parse_page)
+            yield Request(url=topic['link'][0], meta={'topic': topic}, dont_filter=False, callback=self.parse_page)
 
     def parse_page(self, response):
+        topic = response.meta['topic']
         selector = Selector(response)
 
         item = SecNewsItem()
         item['title'] = selector.xpath("//div[@class='article_tittle']/div[@class='inner']/h1/text()").extract()
         item['content'] = "".join(selector.xpath('//div[@class="content-text"]/p/text()').extract())
+        item['uri'] = topic['link'][0]
         print('Finish scan title:' + item['title'][0])
         yield item

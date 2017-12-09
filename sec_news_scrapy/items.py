@@ -13,4 +13,5 @@ class SecNewsItem(scrapy.Item):
     # name = scrapy.Field()
     title = scrapy.Field()
     content = scrapy.Field()
+    uri = scrapy.Field()
     pass
