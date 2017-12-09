@@ -8,7 +8,7 @@
 import jieba
 import jieba.analyse
 import pymysql
-
+import re
 
 def dbHandle():
     conn = pymysql.connect(
@@ -19,6 +19,14 @@ def dbHandle():
         db='secnews',
         port=3306)
     return conn
+
+
+def is_figure(str):
+    value = re.compile(r'^\d+$')
+    if value.match(str):
+        return True
+    else:
+        return False
 
 
 class TutorialPipeline(object):
@@ -32,6 +40,8 @@ class TutorialPipeline(object):
         sql = "insert into t_security_news_words(title, `key`, val) values (%s,%s,%s)"
         try:
             for word in words:
+                if is_figure(word[0]):
+                    continue
                 cursor.execute(sql, (item['title'][0], word[0], int(word[1]*1000)))
             cursor.connection.commit()
         except BaseException as e:
