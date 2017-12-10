@@ -32,6 +32,7 @@ def is_figure(str):
 
 def save_key_word(item):
     words = jieba.analyse.extract_tags(item['content'], topK=50, withWeight=True)
+    print(words)
 
     conn = dbHandle()
     cursor = conn.cursor()
