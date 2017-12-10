@@ -1,21 +1,10 @@
-import pymysql
 import re
-
-
-def dbHandle():
-    conn = pymysql.connect(
-        host="localhost",
-        user="root",
-        passwd="1234",
-        charset="utf8",
-        db='secnews',
-        port=3306)
-    return conn
+from sec_news_scrapy.pipelines import db_handle
 
 
 def get_key_word_from_db():
     words = {}
-    conn = dbHandle()
+    conn = db_handle()
     try:
         with conn.cursor() as cursor:
             cursor.execute(

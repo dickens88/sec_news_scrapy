@@ -11,7 +11,7 @@ import pymysql
 import re
 
 
-def dbHandle():
+def db_handle():
     conn = pymysql.connect(
         host="localhost",
         user="root",
@@ -34,7 +34,7 @@ def save_key_word(item):
     words = jieba.analyse.extract_tags(item['content'], topK=50, withWeight=True)
     print(words)
 
-    conn = dbHandle()
+    conn = db_handle()
     cursor = conn.cursor()
     sql = "insert ignore into t_security_news_words(title, `key`, val) values (%s,%s,%s)"
     try:
@@ -49,7 +49,7 @@ def save_key_word(item):
 
 
 def save_article(item):
-    conn = dbHandle()
+    conn = db_handle()
     cursor = conn.cursor()
     sql = "insert ignore into t_security_news_article(title, content, uri) values (%s,%s,%s)"
     try:
