@@ -3,8 +3,6 @@
 --
 
 DROP TABLE IF EXISTS `t_security_news_article`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_security_news_article` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) DEFAULT NULL,
@@ -20,8 +18,6 @@ CREATE TABLE `t_security_news_article` (
 --
 
 DROP TABLE IF EXISTS `t_security_news_words`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_security_news_words` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) DEFAULT NULL,
@@ -30,5 +26,3 @@ CREATE TABLE `t_security_news_words` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_snw_tk` (`title`,`key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=70458 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
