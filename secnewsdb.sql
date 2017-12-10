@@ -23,6 +23,8 @@ CREATE TABLE `t_security_news_words` (
   `title` varchar(100) DEFAULT NULL,
   `key` varchar(200) DEFAULT NULL,
   `val` int(11) DEFAULT NULL,
+  `last_update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_snw_tk` (`title`,`key`)
-) ENGINE=InnoDB AUTO_INCREMENT=70458 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `idx_snw_tk` (`title`,`key`),
+  KEY `idx_snw_ts` (`last_update_time`)
+) ENGINE=InnoDB AUTO_INCREMENT=97011 DEFAULT CHARSET=utf8;
