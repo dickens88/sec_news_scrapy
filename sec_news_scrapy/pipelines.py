@@ -23,7 +23,7 @@ def db_handle():
 
 
 def is_figure(str):
-    value = re.compile(r'^\d+$')
+    value = re.compile(r'(^\d+$)|(^\d+.\d+$)|(\d+%$)')
     if value.match(str):
         return True
     else:
