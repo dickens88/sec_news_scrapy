@@ -11,6 +11,11 @@
 4. 将关键词保存到数据库
 5. 最后可以用可视化将近期出现的比较频繁的关键词做个展示
 
+# 准备
+- pip3 install scrapy
+- pip3 install pymsql
+- pip3 install jieba
+
 # 如何执行
 ## 安装Scrapy
 安装过程这里不详述
